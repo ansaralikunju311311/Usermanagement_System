@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="/login.css">
+<div class="wrapper">
+  <form id="loginForm" action="/user/login" method="post">
+  
+  
+    <h2>Login</h2>
+    <h4 style="color:aqua">{{message}}</h4>
+
+    <div class="input-field">
+      <input type="text" id="email"  name="email" autocomplete="off">
+      <label>Enter your email</label>
+    </div>
+
+    <div class="input-field">
+      <input type="password" id="password" name="password" autocomplete="off">
+      <label>Enter your password</label>
+    </div>
+
+
+
+
+    <button type="submit">Log In</button>
+
+    <div class="register">
+      <p>Don't have an account? <a href="">Register</a></p>
+    </div>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById('loginForm');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value.trim();
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const passwordPattern = /^(?=.*[a-zA-Z])(?=.*\d).+$/;
+  if (!emailPattern.test(email)) {
+    console.log("email invalidl")
+    return;
+  }
+
+  if (!passwordPattern.test(password)) {
+    console.log("password invalid")
+    return;
+  }
+
+  form.submit();
+});
+
+</script>
